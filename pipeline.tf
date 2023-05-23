@@ -34,6 +34,10 @@ resource "aws_codebuild_project" "tf-apply" {
     image                       = "hashicorp/terraform:0.14.3"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "SERVICE_ROLE"
+    registry_credential{
+        credential = var.dockerhub_credentials
+        credential_provider = "SECRET_MANAGER"
+    }    
   }
 
   source {

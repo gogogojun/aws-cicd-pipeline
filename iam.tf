@@ -6,15 +6,17 @@ resource "aws_iam_role" "my-codepipeline-role" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
+        Action = "sts:AssumeRole",
         Principal = {
           Service = "codepipeline.amazonaws.com"
-        }
-      },
+        },
+        Effect = "Allow"
+        Sid    = ""
+      }
+
     ]
-  })
+    }
+  )
 
 
 }
@@ -69,7 +71,7 @@ resource "aws_iam_role" "my-codebuild-role" {
 data "aws_iam_policy_document" "tf-cicd-build-policies" {
   statement {
     sid       = ""
-    actions   = ["logs:*", "s3:*", "codebuild:*", "iam:*"]
+    actions   = ["logs:*", "s3:*", "codebuild:*","secretmanager:*","iam:*"]
     resources = ["*"]
     effect    = "Allow"
   }
