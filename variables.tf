@@ -3,5 +3,5 @@ variable "codestar_connector_credentials" {
 }
 
 variable "dockerhub_credentials" {
-    type = string
+  type = string
 }
