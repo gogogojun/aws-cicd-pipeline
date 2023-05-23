@@ -81,12 +81,12 @@ resource "aws_iam_policy" "tf-cicd-buid-policy" {
   name        = "tf-cicd-build-policy"
   path        = "/"
   description = "Codebuild policy"
-  policy      = data.aws_iam_policy_document.tf-cicd-pipeline-policies.json
+  policy      = data.aws_iam_policy_document.tf-cicd-build-policies.json
 }
 
 resource "aws_iam_policy_attachment" "tf-cicd-codebuild-attachment1" {
   name       = "my-attachment2"
-  policy_arn = aws_iam_policy.tf-cicd-pipeline-policy.arn
+  policy_arn = aws_iam_policy.tf-cicd-buid-policy.arn
   roles      = [aws_iam_role.my-codebuild-role.id]
 }
 
