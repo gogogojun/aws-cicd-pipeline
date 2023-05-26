@@ -1,3 +1,4 @@
+# terraform.tfstate 파일이 저장되는 백엔드
 terraform {
   backend "s3" {
     bucket  = "gjh-aws-cicd-pipeline"

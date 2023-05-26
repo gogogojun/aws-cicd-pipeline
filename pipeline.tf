@@ -1,3 +1,4 @@
+# cicd 파이프라인 Build 구성
 resource "aws_codebuild_project" "tf-plan" {
   name         = "tf-cicd-plan"
   description  = "plan stage for terraform"
@@ -24,6 +25,7 @@ resource "aws_codebuild_project" "tf-plan" {
   }
 }
 
+# cicd 파이프라인 Deploy 구성
 resource "aws_codebuild_project" "tf-apply" {
   name         = "tf-cicd-apply"
   description  = "apply stage for terraform"

@@ -1,3 +1,4 @@
+# CICD 파이프라인의 Artifact가 저장되는 S3
 resource "aws_s3_bucket" "my_bucket" {
   bucket = "pipeliine-artifacts-gjh1234"
   tags = {
