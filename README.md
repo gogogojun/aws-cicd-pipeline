@@ -19,7 +19,7 @@ GitHub 저장소에 코드를 푸시하면, **CodePipeline → CodeBuild → Ter
 - **Terraform**
   - IaC(Infrastructure as Code) 기반으로 파이프라인 정의
 
----
+
 
 ## 📂 폴더 구조
 ```plaintext
@@ -32,8 +32,8 @@ aws-cicd-pipeline/
 ├── state.tf                  # Terraform backend 설정
 ├── variables.tf              # 변수 정의
 └── pipeline.tf               # CodePipeline / CodeBuild 구성
----
----
+
+
 ## ⚙️ 동작 흐름
 1. GitHub `main` 브랜치에 코드 푸시  
 2. CodePipeline이 Source 단계에서 Terraform 코드를 S3 Artifact로 저장  
@@ -41,7 +41,7 @@ aws-cicd-pipeline/
 4. Deploy 단계(CodeBuild)가 `terraform apply` 실행  
 5. 결과는 CloudWatch Logs 및 AWS 콘솔에서 확인 가능
 
----
+
 
 ## ✅ 실행 결과
 - GitHub 커밋 → CodePipeline 자동 실행 확인
