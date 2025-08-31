@@ -32,7 +32,7 @@ aws-cicd-pipeline/
 ├── state.tf                  # Terraform backend 설정
 ├── variables.tf              # 변수 정의
 └── pipeline.tf               # CodePipeline / CodeBuild 구성
-
+```
 
 ## ⚙️ 동작 흐름
 1. GitHub `main` 브랜치에 코드 푸시  
