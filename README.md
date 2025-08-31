@@ -1,46 +1,48 @@
-AWS CI/CD Pipeline
-📖 프로젝트 설명
+# AWS CI/CD Pipeline with Terraform
 
-Terraform을 이용해 AWS CodePipeline 기반 CI/CD 파이프라인을 구현한 프로젝트입니다.
-GitHub 저장소와 연동하여 코드 변경 시 자동으로 Plan → Apply 단계가 실행되도록 구성했습니다.
+## 📖 프로젝트 개요
+이 프로젝트는 **Terraform**을 활용하여 AWS 상에 **CI/CD 파이프라인**을 자동 구축한 예제입니다.  
+GitHub 저장소에 코드를 푸시하면, **CodePipeline → CodeBuild → Terraform** 흐름을 통해  
+인프라 코드가 자동으로 검증/배포됩니다.
 
-🛠️ 사용 서비스 및 구성
+---
 
-CodePipeline
+## 🛠️ 사용 서비스 및 구성
+- **AWS CodePipeline**
+  - Source: GitHub (CodeStar Connection)
+  - Build/Deploy: CodeBuild (Terraform Plan / Apply)
+- **AWS S3**
+  - Terraform backend (tfstate 저장)
+  - Pipeline Artifact 저장
+- **AWS IAM**
+  - CodePipeline / CodeBuild 전용 IAM Role + Policy
+- **Terraform**
+  - IaC(Infrastructure as Code) 기반으로 파이프라인 정의
 
-Source: GitHub (CodeStar Connection)
+---
 
-Build/Deploy: CodeBuild (Terraform 실행)
-
-S3
-
-Terraform backend (tfstate 저장)
-
-Pipeline Artifacts 저장
-
-IAM
-
-CodePipeline 및 CodeBuild 전용 Role/Policy
-
-Terraform
-
-plan-buildspec.yml, apply-buildspec.yml 기반으로 IaC 실행
-
-📂 주요 구조
-aws-cicd-pipeline/
+## 📂 폴더 구조
 ├── buildspec/
-│   ├── apply-buildspec.yml
-│   └── plan-buildspec.yml
+│ ├── apply-buildspec.yml # terraform apply 실행
+│ └── plan-buildspec.yml # terraform plan 실행
 ├── iam.tf
 ├── s3.tf
 ├── state.tf
 ├── variables.tf
 └── pipeline.tf
 
-✅ 실행 결과
+---
 
-GitHub에 Push → CodePipeline 자동 실행
+## ⚙️ 동작 흐름
+1. GitHub `main` 브랜치에 코드 푸시  
+2. CodePipeline이 Source 단계에서 Terraform 코드를 S3 Artifact로 저장  
+3. Build 단계(CodeBuild)가 `terraform plan` 실행  
+4. Deploy 단계(CodeBuild)가 `terraform apply` 실행  
+5. 결과는 CloudWatch Logs 및 AWS 콘솔에서 확인 가능
 
-Terraform plan → apply 단계 정상 수행
+---
 
-테스트 파일 추가 시 자동 배포 확인 완료
+## ✅ 실행 결과
+- GitHub 커밋 → CodePipeline 자동 실행 확인
+- 테스트 파일 추가 시 자동 빌드/배포 완료
+- Terraform 리소스 정상 생성 및 반영
