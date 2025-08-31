@@ -22,7 +22,16 @@ GitHub 저장소에 코드를 푸시하면, **CodePipeline → CodeBuild → Ter
 ---
 
 ## 📂 폴더 구조
-<pre> ```plaintext buildspec/ ├── apply-buildspec.yml # terraform apply 실행 ├── plan-buildspec.yml # terraform plan 실행 ├── iam.tf ├── s3.tf ├── state.tf ├── variables.tf └── pipeline.tf ``` </pre>
+```plaintext
+aws-cicd-pipeline/
+├── buildspec/
+│   ├── apply-buildspec.yml   # terraform apply 실행
+│   └── plan-buildspec.yml    # terraform plan 실행
+├── iam.tf                    # IAM Role 및 Policy 정의
+├── s3.tf                     # S3 backend 및 artifact bucket 정의
+├── state.tf                  # Terraform backend 설정
+├── variables.tf              # 변수 정의
+└── pipeline.tf               # CodePipeline / CodeBuild 구성
 ---
 
 ## ⚙️ 동작 흐름
