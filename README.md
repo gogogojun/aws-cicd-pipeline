@@ -22,15 +22,7 @@ GitHub 저장소에 코드를 푸시하면, **CodePipeline → CodeBuild → Ter
 ---
 
 ## 📂 폴더 구조
-├── buildspec/
-│ ├── apply-buildspec.yml # terraform apply 실행
-│ └── plan-buildspec.yml # terraform plan 실행
-├── iam.tf
-├── s3.tf
-├── state.tf
-├── variables.tf
-└── pipeline.tf
-
+<pre> ```plaintext buildspec/ ├── apply-buildspec.yml # terraform apply 실행 ├── plan-buildspec.yml # terraform plan 실행 ├── iam.tf ├── s3.tf ├── state.tf ├── variables.tf └── pipeline.tf ``` </pre>
 ---
 
 ## ⚙️ 동작 흐름
